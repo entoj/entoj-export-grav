@@ -1,0 +1,27 @@
+{% macro m_teaser(type = 'content', model, classes = '', caller) %}
+{% from 'macros/e-image.html' import e_image %}
+{% from 'macros/e-headline.html' import e_headline %}
+{% from 'macros/e-cta.html' import e_cta %}
+
+
+    
+    
+    {% set moduleClass = 'm-teaser' %}
+    {% set moduleClasses = [type]|moduleClasses(moduleClass) %}
+    {% set imageSettings = { 'mobile': { 'name': 'mobile', 'aspect': '1x1', 'width': 410 }, 'all': { 'aspect': '16x9', 'width': 830 } } %}
+
+    
+    <div class="{{ moduleClasses }} {{ classes }}" data-entity="{{ moduleClass }}">
+        {{ e_image(model.image, imageSettings, moduleClass ~ '__image') }}
+        <div class="{{ moduleClass }}__body">
+            {% call e_headline('', 3, 'light', moduleClass ~ '__headline') %}{{ model.headline }}{% endcall %}
+            <p class="{{ moduleClass }}__copy">{{ model.copy }}</p>
+            {% if type == 'content' %}
+                {{ e_cta('tertiary', 'light', model.cta, model.link, moduleClass ~ '__cta') }}
+            {% else %}
+                {{ e_cta('secondary', 'light', model.cta, model.link, moduleClass ~ '__cta') }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endmacro %}

@@ -1,0 +1,26 @@
+{% from 'base/elements/e-image.j2' import e_image %}
+{% from 'base/elements/e-headline.j2' import e_headline %}
+{% from 'base/elements/e-cta.j2' import e_cta %}
+{% macro m_teaser(type = 'content', model, classes = '') %}
+
+    
+    
+    {% set moduleClass = 'm-teaser' %}
+    {% set moduleClasses = [type]|moduleClasses(moduleClass) %}
+    {% set imageSettings =  %}
+
+    
+    <div class="{{ moduleClasses }} {{ classes }}" data-entity="{{ moduleClass }}">
+        {{ e_image(model.image, imageSettings, moduleClass ~ '__image') }}
+        <div class="{{ moduleClass }}__body">
+            {% call e_headline('', 3, 'light', moduleClass ~ '__headline') %}{{ model.headline }}{% endcall %}
+            <p class="{{ moduleClass }}__copy">{{ model.copy }}</p>
+            {% if type == 'content' %}
+                {{ e_cta('tertiary', 'dark', model.cta, model.link, moduleClass ~ '__cta') }}
+            {% else %}
+                {{ e_cta('secondary', 'dark', model.cta, model.link, moduleClass ~ '__cta') }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endmacro %}

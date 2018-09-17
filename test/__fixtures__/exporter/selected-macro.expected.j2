@@ -1,0 +1,7 @@
+{% macro m_teaser_hero(model, caller) %}
+{% from 'macros/m-teaser.html' import m_teaser %}
+
+
+    {{ m_teaser('hero', model, '') }}
+
+{% endmacro %}
