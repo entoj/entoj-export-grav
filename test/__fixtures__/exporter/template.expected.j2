@@ -10,8 +10,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="TK Relaunch" />
-        {{ global_nojs() }}
-        {{ global_css() }}
+        {{ global_nojs(page) }}
+        {{ global_css(page) }}
     </head>
     <body class="t-bare {% block bodyClass %}{% endblock %}">
         {% block header %}{% endblock %}
@@ -19,6 +19,6 @@
             {% block content %}{% endblock %}
         </div>
         {% block footer %}{% endblock %}
-        {{ global_js() }}
+        {{ global_js(page) }}
     </body>
 </html>

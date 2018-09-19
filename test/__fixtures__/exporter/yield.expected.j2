@@ -1,4 +1,4 @@
-{% macro m_teaser(type = 'content', model, classes = '', caller) %}
+{% macro m_teaser(type = 'content', model, classes = '', page, caller) %}
 {% from 'macros/e-image.html' import e_image %}
 {% from 'macros/e-headline.html' import e_headline %}
 {% from 'macros/e-cta.html' import e_cta %}
@@ -12,14 +12,14 @@
 
     
     <div class="{{ moduleClasses }} {{ classes }}" data-entity="{{ moduleClass }}">
-        {{ e_image(model.image, imageSettings, moduleClass ~ '__image') }}
+        {{ e_image(model.image, imageSettings, moduleClass ~ '__image', page) }}
         <div class="{{ moduleClass }}__body">
-            {% call e_headline('', 3, 'light', moduleClass ~ '__headline') %}{{ model.headline }}{% endcall %}
+            {% call e_headline('', 3, 'light', moduleClass ~ '__headline', page) %}{{ model.headline }}{% endcall %}
             <p class="{{ moduleClass }}__copy">{{ model.copy }}</p>
             {% if type == 'content' %}
-                {{ e_cta('tertiary', 'light', model.cta, model.link, moduleClass ~ '__cta') }}
+                {{ e_cta('tertiary', 'light', model.cta, model.link, moduleClass ~ '__cta', page) }}
             {% else %}
-                {{ e_cta('secondary', 'light', model.cta, model.link, moduleClass ~ '__cta') }}
+                {{ e_cta('secondary', 'light', model.cta, model.link, moduleClass ~ '__cta', page) }}
             {% endif %}
         </div>
     </div>

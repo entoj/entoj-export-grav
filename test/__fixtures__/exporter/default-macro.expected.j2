@@ -1,4 +1,4 @@
-{% macro e_image(model, settings, classes = '', caller) %}
+{% macro e_image(model, settings, classes = '', page, caller) %}
 
     
     
@@ -11,19 +11,19 @@
             {% for index, setting in settings %}
                 {% if index != 'all' %}
                     {% set mediaQuery = setting.name|mediaQuery() %}
-                    {% set image = model|imageUrl(setting.aspect, setting.width, setting.height) %}
+                    {% set image = model|imageUrl(page, setting.aspect, setting.width, setting.height) %}
                     <source data-srcset="{{ image }}" media="{{ mediaQuery }}" />
                 {% endif %}
             {% endfor %}
             {% for index, setting in settings %}
                 {% if index == 'all' %}
-                    {% set image = model|imageUrl(setting.aspect, setting.width, setting.height) %}
+                    {% set image = model|imageUrl(page, setting.aspect, setting.width, setting.height) %}
                     <source data-srcset="{{ image }}" />
                 {% endif %}
             {% endfor %}
         {% endif %}
         {% if image|empty() %}
-            {% set image = model|imageUrl() %}
+            {% set image = model|imageUrl(page) %}
         {% endif %}
         <img class="{{ moduleClass }}__img do-lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="{{ image }}" alt="{{ model.alt }}" />
     </picture>
