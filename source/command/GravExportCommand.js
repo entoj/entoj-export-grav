@@ -92,11 +92,11 @@ class GravExportCommand extends ExportCommand
     {
         if ((action || '').toLowerCase() == this.exportName.toLowerCase())
         {
-            if (parameters.command == 'export')
+            if (parameters && parameters.command == 'export')
             {
                 return this.export(parameters);
             }
-            if (parameters.command == 'watch')
+            if (parameters && parameters.command == 'watch')
             {
                 return this.watch(parameters);
             }
