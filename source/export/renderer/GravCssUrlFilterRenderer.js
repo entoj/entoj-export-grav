@@ -17,7 +17,7 @@ class GravCssUrlFilterRenderer extends TwigFilterNodeRenderer
      */
     static get className()
     {
-        return 'export.renderer/CmMarkupFilterRenderer';
+        return 'export.renderer/GravCssUrlFilterRenderer';
     }
 
 

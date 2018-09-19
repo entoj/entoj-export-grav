@@ -33,6 +33,15 @@ class GravUnwrappedMacroNodeRenderer extends NodeListRenderer
 
 
     /**
+     * @return {Promise<Boolean>}
+     */
+    addParameters(isFirst, node, configuration)
+    {
+        return Promise.resolve((isFirst ? '' : ', ') + 'page');
+    }
+
+
+    /**
      * @return {Promise<String>}
      */
     render(node, configuration)

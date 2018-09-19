@@ -9,8 +9,11 @@ module.exports =
 
     rendererList:
     [
+        require('./GravUnwrappedMacroNodeRenderer.js').GravUnwrappedMacroNodeRenderer,
+        require('./GravMacroNodeRenderer.js').GravMacroNodeRenderer,
+        require('./GravCallNodeRenderer.js').GravCallNodeRenderer,
         require('./GravCssUrlFilterRenderer.js').GravCssUrlFilterRenderer,
-        require('./GravJsUrlFilterRenderer.js').GravJsUrlFilterRenderer,
-        require('./GravUnwrappedMacroNodeRenderer.js').GravUnwrappedMacroNodeRenderer
+        require('./GravImageUrlFilterRenderer.js').GravImageUrlFilterRenderer,
+        require('./GravJsUrlFilterRenderer.js').GravJsUrlFilterRenderer
     ].concat(require('entoj-export-twig').export.renderer.rendererList)
 };
